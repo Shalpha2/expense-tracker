@@ -9,7 +9,8 @@ export default function ExpensesTable({ expenses, setExpenses, search, setSearch
 
   const filteredExpenses = expenses.filter((expense) =>
     expense.name.toLowerCase().includes(search.toLowerCase()) ||
-    expense.description.toLowerCase().includes(search.toLowerCase()) 
+    expense.description.toLowerCase().includes(search.toLowerCase()) ||
+    expense.category.toLowerCase().includes(search.toLowerCase())
   );
 
   return (

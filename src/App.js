@@ -24,9 +24,18 @@ function App() {
       name: "Pay loan",
       description: "Bank loan",
       category: "loan",
-      amount: 2500,
+      amount: 25000,
       date: "2025-03-15"
     },
+
+    {
+      name: "Buy Shoes",
+      description: "Add to my shoe collection",
+      category: "Growth",
+      amount: 3500,
+      date: "2025-04-23"
+    },
+
   ]);
 
   

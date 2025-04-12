@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function ExpenseForm({ setExpenses }) {
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -11,7 +12,9 @@ export default function ExpenseForm({ setExpenses }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     setExpenses((prev) => [...prev, formData]);
+
     setFormData({
       name: "",
       description: "",
@@ -19,15 +22,18 @@ export default function ExpenseForm({ setExpenses }) {
       amount: "",
       date: "",
     });
+
   }
 
   function handleOnChange(event) {
+
     setFormData({ ...formData, [event.target.name]: event.target.value });
   }
 
   return (
     <div className="card shadow-sm p-3 mb-3 bg-light rounded">
       <form onSubmit={handleSubmit}>
+        
         <h5 className="fw-bold mb-3">Add Expense</h5>
 
         <div className="mb-3">

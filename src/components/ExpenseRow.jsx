@@ -1,6 +1,5 @@
 export default function ExpenseRow({ expense, handleRemove }) {
     
-  
     return (
      <tr>
         <td>{expense.name}</td>
