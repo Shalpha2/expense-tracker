@@ -1,21 +1,19 @@
-export default function ExpenseRow({ expense,handleRemove }) {
-
-    const formattedDate = new Date(expense.date).toLocaleDateString("en-KE", {
-        year: "numeric",
-        month: "short",
-        day: "numeric"
-      });
+export default function ExpenseRow({ expense, handleRemove }) {
+    
+  
     return (
-      <tr>
-        <td>{expense.type}</td>
+     <tr>
+        <td>{expense.name}</td>
         <td>{expense.description}</td>
         <td>{expense.category}</td>
         <td>{expense.amount}</td>
-        <td>{formattedDate}</td>
+        <td>{expense.date}</td>
         <td>
-          <button onClick={handleRemove} >Remove</button>
+          <button
+            onClick={handleRemove}
+            className="btn btn-outline-danger btn-sm" >Remove</button>
         </td>
-      </tr>
+    </tr>
     );
   }
   

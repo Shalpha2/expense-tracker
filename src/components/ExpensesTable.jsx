@@ -1,40 +1,42 @@
 import ExpenseRow from "./ExpenseRow";
 import SearchBar from "./SearchBar";
 
-export default function ExpensesTable({expenses, setExpenses}){
-    
- 
-    function handleRemove(indexToRemove) {
-        setExpenses((prev) => prev.filter((_, index) => index !== indexToRemove));  
-        
-      }
-    
+export default function ExpensesTable({ expenses, setExpenses, search, setSearch }) {
 
- 
-    return(
-<div className="col">
-    <h3>Expense Tracker</h3>
-    <SearchBar/>
- <table className="table table-striped">
-     <thead>
-     <tr>
+  function handleRemove(indexToRemove) {
+    setExpenses(expenses.filter((_, index) => index !== indexToRemove));
+  }
 
-      <th>Expense</th>
-     <th>Description</th>
-     <th>Category</th>
-     <th>Amount</th>
-     <th>Date</th> 
-    </tr>
- </thead>
-<tbody>
-{expenses.map((exp, index) => (
-            <ExpenseRow key={index} expense={exp} handleRemove={()=>handleRemove(index)} />
+  const filteredExpenses = expenses.filter((expense) =>
+    expense.name.toLowerCase().includes(search.toLowerCase()) ||
+    expense.description.toLowerCase().includes(search.toLowerCase()) 
+  );
+
+  return (
+    <div>
+      <SearchBar search={search} setSearch={setSearch} />
+      <table className="table table-striped table-hover table-bordered">
+        <thead className="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Amount (KES)</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredExpenses.map((expense, index) => (
+            <ExpenseRow
+              key={index}
+              expense={expense}
+              handleRemove={() => handleRemove(index)}
+            />
           ))}
-          
-  </tbody>
- 
-     
-</table>
-</div>  
-    )
+        </tbody>
+      </table>
+    </div>
+  );
 }
+
